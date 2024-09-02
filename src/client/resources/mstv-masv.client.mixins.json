@@ -1,0 +1,11 @@
+{
+  "required": false ,
+  "package": "de.pnku.mstv_masv.mixin.client" ,
+  "compatibilityLevel": "JAVA_21" ,
+  "client": [
+    "ArmorStandRendererMixin"
+  ] ,
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "armor_stands",
+  "key": {
+    "/": {
+      "item": "mstv-base:jungle_stick"
+    },
+    "_": {
+      "item": "minecraft:smooth_stone_slab"
+    }
+  },
+  "pattern": [
+    "///",
+    " / ",
+    "/_/"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mstv-masv:jungle_armor_stand"
+  }
+}
