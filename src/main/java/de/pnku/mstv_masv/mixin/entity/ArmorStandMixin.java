@@ -2,7 +2,6 @@ package de.pnku.mstv_masv.mixin.entity;
 
 import de.pnku.mstv_masv.item.MoreArmorStandVariantItems;
 import de.pnku.mstv_masv.util.IArmorStand;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -33,8 +32,8 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
     }
 
     @Inject(method = "defineSynchedData", at = @At("TAIL"))
-    protected void defineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci) {
-        builder.define(DATA_ID_TYPE, "oak");
+    protected void defineSynchedData(CallbackInfo ci) {
+        this.entityData.define(DATA_ID_TYPE, "oak");
     }
 
     @Unique
@@ -67,7 +66,6 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
 
             ItemStack itemStack;
             switch (((IArmorStand) this).masv$getVariant()) {
-                case "oak" -> itemStack = new ItemStack(Items.ARMOR_STAND);
                 case "acacia" -> itemStack = new ItemStack(MoreArmorStandVariantItems.ACACIA_ARMOR_STAND);
                 case "bamboo" -> itemStack = new ItemStack(MoreArmorStandVariantItems.BAMBOO_ARMOR_STAND);
                 case "birch" -> itemStack = new ItemStack(MoreArmorStandVariantItems.BIRCH_ARMOR_STAND);
@@ -78,9 +76,11 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
                 case "mangrove" -> itemStack = new ItemStack(MoreArmorStandVariantItems.MANGROVE_ARMOR_STAND);
                 case "spruce" -> itemStack = new ItemStack(MoreArmorStandVariantItems.SPRUCE_ARMOR_STAND);
                 case "warped" -> itemStack = new ItemStack(MoreArmorStandVariantItems.WARPED_ARMOR_STAND);
-                case null, default -> itemStack = new ItemStack(Items.ARMOR_STAND);
+                default -> itemStack = new ItemStack(Items.ARMOR_STAND);
             }
-        itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
+        if (this.hasCustomName()) {
+            itemStack.setHoverName(this.getCustomName());
+        }
         Block.popResource(this.level(), this.blockPosition(), itemStack);
         ((ArmorStand) (Object) this).brokenByAnything(damageSource);
         }
