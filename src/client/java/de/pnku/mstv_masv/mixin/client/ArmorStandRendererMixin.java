@@ -24,7 +24,7 @@ public class ArmorStandRendererMixin {
                 cir.setReturnValue(DEFAULT_SKIN_LOCATION);
             } else {
                 String path = "textures/entity/armorstand/" + ((IArmorStand) entity).masv$getVariant() + ".png";
-                cir.setReturnValue(new ResourceLocation(MoreArmorStandVariants.MOD_ID, path));
+                cir.setReturnValue(MoreArmorStandVariants.asId(path));
             }
         }
     }

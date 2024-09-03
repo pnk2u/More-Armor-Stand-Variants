@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -60,7 +61,7 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
     }
 
     @Inject(method = "brokenByPlayer", at = @At("HEAD"), cancellable = true)
-    private void injectedBrokenByPlayer(DamageSource damageSource, CallbackInfo ci) {
+    private void injectedBrokenByPlayer(ServerLevel level, DamageSource damageSource, CallbackInfo ci) {
         if (((IArmorStand) this).masv$getVariant() != null) {
             // debug
             LOGGER.info("Armor Stand Variant found: {}", ((IArmorStand) this).masv$getVariant());
@@ -82,7 +83,7 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
             }
         itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
         Block.popResource(this.level(), this.blockPosition(), itemStack);
-        ((ArmorStand) (Object) this).brokenByAnything(damageSource);
+        ((ArmorStand) (Object) this).brokenByAnything(level, damageSource);
         }
         ci.cancel();
     }
