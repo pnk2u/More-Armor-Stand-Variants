@@ -5,11 +5,13 @@ import de.pnku.mstv_masv.MoreArmorStandVariants;
 import de.pnku.mstv_masv.item.MoreArmorStandVariantItem;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+
+import java.util.function.Consumer;
 
 import static de.pnku.mstv_masv.item.MoreArmorStandVariantItems.more_armor_stands;
 
@@ -19,7 +21,7 @@ public class MoreArmorStandVariantRecipeGenerator extends FabricRecipeProvider {
     }
 
     @Override
-    public void buildRecipes(RecipeOutput exporter) {
+    public void buildRecipes(Consumer<FinishedRecipe> exporter) {
         for (Item armorStandItem : more_armor_stands) {
             String planksWood = ((MoreArmorStandVariantItem) armorStandItem).masvWoodType;
             Item stickVariant = MoreStickVariantItem.getStickItem(planksWood);
