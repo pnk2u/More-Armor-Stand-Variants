@@ -42,8 +42,8 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
     }
 
     @Inject(method = "defineSynchedData", at = @At("TAIL"))
-    protected void defineSynchedData(SynchedEntityData.Builder builder, CallbackInfo ci) {
-        builder.define(DATA_ID_TYPE, "oak");
+    protected void defineSynchedData(CallbackInfo ci) {
+        this.entityData.define(DATA_ID_TYPE, "oak");
     }
 
     @Unique
@@ -87,7 +87,7 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
     }
 
     @Inject(method = "brokenByPlayer", at = @At("HEAD"), cancellable = true)
-    private void injectedBrokenByPlayer(ServerLevel level, DamageSource damageSource, CallbackInfo ci) {
+    private void injectedBrokenByPlayer(DamageSource damageSource, CallbackInfo ci) {
         String armorStandVariant = ((IArmorStand) this).masv$getVariant();
         if (armorStandVariant != null) {
             // debug
@@ -96,7 +96,7 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
             ItemStack itemStack = armorStandItemFromVariant(armorStandVariant);
         itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
         Block.popResource(this.level(), this.blockPosition(), itemStack);
-        ((ArmorStand) (Object) this).brokenByAnything(level, damageSource);
+        ((ArmorStand) (Object) this).brokenByAnything(damageSource);
         }
         ci.cancel();
     }

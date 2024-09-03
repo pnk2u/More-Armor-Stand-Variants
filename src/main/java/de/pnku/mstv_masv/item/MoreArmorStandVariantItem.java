@@ -50,7 +50,7 @@ public class MoreArmorStandVariantItem extends ArmorStandItem {
                 if (level instanceof ServerLevel) {
                     ServerLevel serverLevel = (ServerLevel)level;
                     Consumer<ArmorStand> consumer = EntityType.createDefaultStackConfig(serverLevel, itemStack, context.getPlayer());
-                    ArmorStand armorStand = (ArmorStand)EntityType.ARMOR_STAND.create(serverLevel, consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
+                    ArmorStand armorStand = (ArmorStand)EntityType.ARMOR_STAND.create(serverLevel, itemStack.getTag(), consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
                     if (armorStand == null) {
                         return InteractionResult.FAIL;
                     }
