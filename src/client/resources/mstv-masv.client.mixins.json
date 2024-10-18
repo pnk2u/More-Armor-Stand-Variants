@@ -3,7 +3,8 @@
   "package": "de.pnku.mstv_masv.mixin.client" ,
   "compatibilityLevel": "JAVA_21" ,
   "client": [
-    "ArmorStandRendererMixin"
+    "ArmorStandRendererMixin" ,
+    "ArmorStandRenderStateMixin"
   ] ,
   "injectors": {
     "defaultRequire": 1

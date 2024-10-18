@@ -1,16 +1,19 @@
 package de.pnku.mstv_masv.item;
 
+import de.pnku.mstv_masv.MoreArmorStandVariants;
 import de.pnku.mstv_masv.util.IArmorStand;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -30,7 +33,7 @@ public class MoreArmorStandVariantItem extends ArmorStandItem {
 
 
     public MoreArmorStandVariantItem(String masvWoodType, Item.Properties properties) {
-        super(properties);
+        super(properties.setId(ResourceKey.create(Registries.ITEM, MoreArmorStandVariants.asId(masvWoodType + "_armor_stand"))));
         this.masvWoodType = masvWoodType;
     }
 
@@ -50,7 +53,7 @@ public class MoreArmorStandVariantItem extends ArmorStandItem {
                 if (level instanceof ServerLevel) {
                     ServerLevel serverLevel = (ServerLevel)level;
                     Consumer<ArmorStand> consumer = EntityType.createDefaultStackConfig(serverLevel, itemStack, context.getPlayer());
-                    ArmorStand armorStand = (ArmorStand)EntityType.ARMOR_STAND.create(serverLevel, consumer, blockPos, MobSpawnType.SPAWN_EGG, true, true);
+                    ArmorStand armorStand = (ArmorStand)EntityType.ARMOR_STAND.create(serverLevel, consumer, blockPos, EntitySpawnReason.SPAWN_ITEM_USE, true, true);
                     if (armorStand == null) {
                         return InteractionResult.FAIL;
                     }
@@ -63,7 +66,7 @@ public class MoreArmorStandVariantItem extends ArmorStandItem {
                 }
 
                 itemStack.shrink(1);
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.SUCCESS;
             } else {
                 return InteractionResult.FAIL;
             }

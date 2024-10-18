@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "armor_stands",
   "key": {
-    "/": {
-      "item": "minecraft:bamboo"
-    },
-    "_": {
-      "item": "minecraft:smooth_stone_slab"
-    }
+    "/": "minecraft:bamboo",
+    "_": "minecraft:smooth_stone_slab"
   },
   "pattern": [
     "///",
