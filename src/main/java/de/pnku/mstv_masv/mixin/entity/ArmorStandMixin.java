@@ -3,7 +3,6 @@ package de.pnku.mstv_masv.mixin.entity;
 import de.pnku.mstv_base.item.MoreStickVariantItem;
 import de.pnku.mstv_masv.item.MoreArmorStandVariantItems;
 import de.pnku.mstv_masv.util.IArmorStand;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -28,7 +27,7 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static de.pnku.mstv_masv.MoreArmorStandVariants.LOGGER;
+// import static de.pnku.mstv_masv.MoreArmorStandVariants.LOGGER;
 import static de.pnku.mstv_masv.item.MoreArmorStandVariantItems.*;
 
 @Mixin(ArmorStand.class)
@@ -94,7 +93,9 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
             // LOGGER.info("Armor Stand Variant found: {}", (armorStandVariant));
 
             ItemStack itemStack = armorStandItemFromVariant(armorStandVariant);
-        itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
+        if (this.hasCustomName()) {
+            itemStack.setHoverName(this.getCustomName());
+        }
         Block.popResource(this.level(), this.blockPosition(), itemStack);
         ((ArmorStand) (Object) this).brokenByAnything(damageSource);
         }
