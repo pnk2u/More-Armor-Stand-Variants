@@ -18,8 +18,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static de.pnku.mstv_masv.MoreArmorStandVariants.LOGGER;
+// import static de.pnku.mstv_masv.MoreArmorStandVariants.LOGGER;
+import static de.pnku.mstv_masv.item.MoreArmorStandVariantItems.*;
 
 @Mixin(ArmorStand.class)
 public abstract class ArmorStandMixin extends LivingEntity implements IArmorStand {
@@ -46,6 +48,24 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
         return this.entityData.get(DATA_ID_TYPE);
     }
 
+    @Unique
+    public ItemStack armorStandItemFromVariant(String variant) {
+        switch (variant) {
+            case "oak" -> {return new ItemStack(Items.ARMOR_STAND);}
+            case "acacia" -> {return new ItemStack(ACACIA_ARMOR_STAND);}
+            case "bamboo" -> {return new ItemStack(BAMBOO_ARMOR_STAND);}
+            case "birch" -> {return new ItemStack(BIRCH_ARMOR_STAND);}
+            case "cherry" -> {return new ItemStack(CHERRY_ARMOR_STAND);}
+            case "crimson" -> {return new ItemStack(CRIMSON_ARMOR_STAND);}
+            case "dark_oak" -> {return new ItemStack(DARK_OAK_ARMOR_STAND);}
+            case "jungle" -> {return new ItemStack(JUNGLE_ARMOR_STAND);}
+            case "mangrove" -> {return new ItemStack(MANGROVE_ARMOR_STAND);}
+            case "spruce" -> {return new ItemStack(SPRUCE_ARMOR_STAND);}
+            case "warped" -> {return new ItemStack(WARPED_ARMOR_STAND);}
+            case null, default -> {return new ItemStack(Items.ARMOR_STAND);}
+        }
+    }
+
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
     protected void injectedAddAdditionalSaveData(CompoundTag compound, CallbackInfo ci) {
         compound.putString("Type", this.masv$getVariant());
@@ -60,24 +80,12 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
 
     @Inject(method = "brokenByPlayer", at = @At("HEAD"), cancellable = true)
     private void injectedBrokenByPlayer(DamageSource damageSource, CallbackInfo ci) {
-        if (((IArmorStand) this).masv$getVariant() != null) {
+        String armorStandVariant = ((IArmorStand) this).masv$getVariant();
+        if (armorStandVariant != null) {
             // debug
-            LOGGER.info("Armor Stand Variant found: {}", ((IArmorStand) this).masv$getVariant());
+            // LOGGER.info("Armor Stand Variant found: {}", (armorStandVariant));
 
-            ItemStack itemStack;
-            switch (((IArmorStand) this).masv$getVariant()) {
-                case "acacia" -> itemStack = new ItemStack(MoreArmorStandVariantItems.ACACIA_ARMOR_STAND);
-                case "bamboo" -> itemStack = new ItemStack(MoreArmorStandVariantItems.BAMBOO_ARMOR_STAND);
-                case "birch" -> itemStack = new ItemStack(MoreArmorStandVariantItems.BIRCH_ARMOR_STAND);
-                case "cherry" -> itemStack = new ItemStack(MoreArmorStandVariantItems.CHERRY_ARMOR_STAND);
-                case "crimson" -> itemStack = new ItemStack(MoreArmorStandVariantItems.CRIMSON_ARMOR_STAND);
-                case "dark_oak" -> itemStack = new ItemStack(MoreArmorStandVariantItems.DARK_OAK_ARMOR_STAND);
-                case "jungle" -> itemStack = new ItemStack(MoreArmorStandVariantItems.JUNGLE_ARMOR_STAND);
-                case "mangrove" -> itemStack = new ItemStack(MoreArmorStandVariantItems.MANGROVE_ARMOR_STAND);
-                case "spruce" -> itemStack = new ItemStack(MoreArmorStandVariantItems.SPRUCE_ARMOR_STAND);
-                case "warped" -> itemStack = new ItemStack(MoreArmorStandVariantItems.WARPED_ARMOR_STAND);
-                default -> itemStack = new ItemStack(Items.ARMOR_STAND);
-            }
+            ItemStack itemStack = armorStandItemFromVariant(armorStandVariant);
         if (this.hasCustomName()) {
             itemStack.setHoverName(this.getCustomName());
         }
@@ -85,6 +93,14 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
         ((ArmorStand) (Object) this).brokenByAnything(damageSource);
         }
         ci.cancel();
+    }
+
+    @Inject(method = "getPickResult", at = @At("HEAD"), cancellable = true)
+    public void getPickResult(CallbackInfoReturnable<ItemStack> cir) {
+        String armorStandVariant = ((IArmorStand) this).masv$getVariant();
+        if (armorStandVariant != null) {
+            cir.setReturnValue(armorStandItemFromVariant(armorStandVariant));
+        }
     }
 
     static {
