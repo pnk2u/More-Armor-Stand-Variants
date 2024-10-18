@@ -62,7 +62,7 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
             case "mangrove" -> {return new ItemStack(MANGROVE_ARMOR_STAND);}
             case "spruce" -> {return new ItemStack(SPRUCE_ARMOR_STAND);}
             case "warped" -> {return new ItemStack(WARPED_ARMOR_STAND);}
-            case null, default -> {return new ItemStack(Items.ARMOR_STAND);}
+            default -> {return new ItemStack(Items.ARMOR_STAND);}
         }
     }
 
