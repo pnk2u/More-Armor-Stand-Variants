@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "armor_stands",
   "key": {
-    "/": {
-      "item": "mstv-base:spruce_stick"
-    },
-    "_": {
-      "item": "minecraft:smooth_stone_slab"
-    }
+    "/": "mstv-base:spruce_stick",
+    "_": "minecraft:smooth_stone_slab"
   },
   "pattern": [
     "///",

@@ -4,13 +4,9 @@
   "group": "armor_stands",
   "key": {
     "/": [
-      {
-        "item": "minecraft:stick"
-      }
+      "minecraft:stick"
     ],
-    "_": {
-      "item": "minecraft:smooth_stone_slab"
-    }
+    "_": "minecraft:smooth_stone_slab"
   },
   "pattern": [
     "///",
