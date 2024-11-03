@@ -3,7 +3,6 @@ package de.pnku.mstv_masv.mixin.entity;
 import de.pnku.mstv_base.item.MoreStickVariantItem;
 import de.pnku.mstv_masv.item.MoreArmorStandVariantItems;
 import de.pnku.mstv_masv.util.IArmorStand;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
