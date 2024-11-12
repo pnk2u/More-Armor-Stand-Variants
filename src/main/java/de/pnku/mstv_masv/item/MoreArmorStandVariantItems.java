@@ -22,6 +22,7 @@ public class MoreArmorStandVariantItems {
     public static final Item CHERRY_ARMOR_STAND = new MoreArmorStandVariantItem("cherry", new Item.Properties().stacksTo(16));
     public static final Item CRIMSON_ARMOR_STAND = new MoreArmorStandVariantItem("crimson", new Item.Properties().stacksTo(16).fireResistant());
     public static final Item DARK_OAK_ARMOR_STAND = new MoreArmorStandVariantItem("dark_oak", new Item.Properties().stacksTo(16));
+    public static final Item PALE_OAK_ARMOR_STAND = new MoreArmorStandVariantItem("pale_oak", new Item.Properties().stacksTo(16));
     public static final Item JUNGLE_ARMOR_STAND = new MoreArmorStandVariantItem("jungle", new Item.Properties().stacksTo(16));
     public static final Item MANGROVE_ARMOR_STAND = new MoreArmorStandVariantItem("mangrove", new Item.Properties().stacksTo(16));
     public static final Item SPRUCE_ARMOR_STAND = new MoreArmorStandVariantItem("spruce", new Item.Properties().stacksTo(16));
@@ -46,7 +47,8 @@ public class MoreArmorStandVariantItems {
         registerArmorStandItem(CHERRY_ARMOR_STAND, BIRCH_ARMOR_STAND);
         registerArmorStandItem(CRIMSON_ARMOR_STAND, CHERRY_ARMOR_STAND);
         registerArmorStandItem(DARK_OAK_ARMOR_STAND, CRIMSON_ARMOR_STAND);
-        registerArmorStandItem(JUNGLE_ARMOR_STAND, DARK_OAK_ARMOR_STAND);
+        registerArmorStandItem(PALE_OAK_ARMOR_STAND, DARK_OAK_ARMOR_STAND);
+        registerArmorStandItem(JUNGLE_ARMOR_STAND, PALE_OAK_ARMOR_STAND);
         registerArmorStandItem(MANGROVE_ARMOR_STAND, JUNGLE_ARMOR_STAND);
         registerArmorStandItem(SPRUCE_ARMOR_STAND, MANGROVE_ARMOR_STAND);
         registerArmorStandItem(WARPED_ARMOR_STAND, SPRUCE_ARMOR_STAND);
