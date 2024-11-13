@@ -6,10 +6,9 @@ import de.pnku.mstv_masv.util.IArmorStand;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
-import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
-import net.minecraft.core.dispenser.DispenseItemBehavior;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
@@ -38,12 +37,12 @@ public class MoreArmorStandVariants implements ModInitializer {
 	public void onInitialize() {
 		MoreArmorStandVariantItems.registerArmorStandItems();
 		for (Item armorStandItem : more_armor_stands) {
-			DispenserBlock.registerBehavior((ItemLike) armorStandItem, (DispenseItemBehavior)new DefaultDispenseItemBehavior(){
+			DispenserBlock.registerBehavior((ItemLike) armorStandItem, new DefaultDispenseItemBehavior() {
 				@Override
-				public ItemStack execute(BlockSource blockSource, ItemStack item) {
-					Direction direction = (Direction)blockSource.state().getValue(DispenserBlock.FACING);
-					BlockPos blockPos = blockSource.pos().relative(direction);
-					ServerLevel serverLevel = blockSource.level();
+				public ItemStack execute(BlockSource source, ItemStack item) {
+					Direction direction = (Direction)source.getBlockState().getValue(DispenserBlock.FACING);
+					BlockPos blockPos = source.getPos().relative(direction);
+					ServerLevel serverLevel = source.getLevel();
 					Consumer<ArmorStand> consumer = EntityType.appendDefaultStackConfig((armorStand) -> {
 						armorStand.setYRot(direction.toYRot());
 					}, serverLevel, item, (Player)null);
