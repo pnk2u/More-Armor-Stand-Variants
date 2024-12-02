@@ -42,7 +42,7 @@ public class MoreArmorStandVariants implements ModInitializer {
 				@Override
 				public ItemStack execute(BlockSource blockSource, ItemStack item) {
 					Consumer<ArmorStand> consumer;
-					Direction direction = (Direction)blockSource.state().getValue((Property)DispenserBlock.FACING);
+					Direction direction = (Direction)blockSource.state().getValue(DispenserBlock.FACING);
 					BlockPos blockPos = blockSource.pos().relative(direction);
 					ServerLevel serverLevel = blockSource.level();
 					ArmorStand armorStandEntity = EntityType.ARMOR_STAND.spawn(serverLevel, consumer = EntityType.appendDefaultStackConfig(armorStand -> armorStand.setYRot(direction.toYRot()), serverLevel, item, null), blockPos, EntitySpawnReason.DISPENSER, false, false);
