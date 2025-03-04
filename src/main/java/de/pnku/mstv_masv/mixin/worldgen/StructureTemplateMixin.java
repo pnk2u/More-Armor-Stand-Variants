@@ -24,7 +24,7 @@ public class StructureTemplateMixin {
     @Inject(method = "placeEntities", at = @At(value = "INVOKE", target = "Lnet/minecraft/nbt/CompoundTag;put(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;"))
     private void injectedPlaceEntities(ServerLevelAccessor serverLevel, BlockPos pos, Mirror mirror, Rotation rotation, BlockPos offset, BoundingBox boundingBox, boolean withEntities, CallbackInfo ci, @Local(ordinal = 0) LocalRef<CompoundTag> nbt) {
             if (nbt.get().getString("id").equals("minecraft:armor_stand")) {
-                String biomeName = serverLevel.getBiome(pos).getRegisteredName();
+                String biomeName = serverLevel.getBiome(pos).unwrapKey().get().location().toString();
                 String woodType;
                 switch (biomeName) {
                     case "minecraft:savanna", "minecraft:savanna_plateau", "minecraft:windswept_savanna" -> woodType = "acacia";
