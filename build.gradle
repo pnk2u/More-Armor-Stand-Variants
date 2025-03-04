@@ -51,6 +51,7 @@ dependencies {
 
 	// MStV
 	modCompileOnly "maven.modrinth:more-stick-variants:${project.mstv_version_id}"
+	modLocalRuntime "maven.modrinth:more-stick-variants:${project.mstv_version_id}"
 }
 
 processResources {
