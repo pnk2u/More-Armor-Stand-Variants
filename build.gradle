@@ -42,7 +42,7 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings loom.layered() {
 		officialMojangMappings()
-		parchment("org.parchmentmc.data:parchment-${project.minecraft_version}:${project.parchment_date}@zip")
+		parchment("org.parchmentmc.data:parchment-1.21.4:${project.parchment_date}@zip")
 	}
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
@@ -51,7 +51,7 @@ dependencies {
 
 	// MStV
 	modCompileOnly "maven.modrinth:more-stick-variants:${project.mstv_version_id}"
-	modLocalRuntime "maven.modrinth:more-stick-variants:${project.mstv_version_id}"
+	modLocalRuntime files("res/MoreStickVariants-1.4.2+1.21.5-rc1-Fabric.jar") //"maven.modrinth:more-stick-variants:${project.mstv_version_id}"
 }
 
 processResources {

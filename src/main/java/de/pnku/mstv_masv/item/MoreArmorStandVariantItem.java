@@ -59,7 +59,7 @@ public class MoreArmorStandVariantItem extends ArmorStandItem {
                     }
                     ((IArmorStand) armorStand).masv$setVariant(this.masvWoodType);
                     float f = (float) Mth.floor((Mth.wrapDegrees(context.getRotation() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-                    armorStand.moveTo(armorStand.getX(), armorStand.getY(), armorStand.getZ(), f, 0.0F);
+                    armorStand.snapTo(armorStand.getX(), armorStand.getY(), armorStand.getZ(), f, 0.0F);
                     serverLevel.addFreshEntityWithPassengers(armorStand);
                     level.playSound((Player)null, armorStand.getX(), armorStand.getY(), armorStand.getZ(), SoundEvents.ARMOR_STAND_PLACE, SoundSource.BLOCKS, 0.75F, 0.8F);
                     armorStand.gameEvent(GameEvent.ENTITY_PLACE, context.getPlayer());

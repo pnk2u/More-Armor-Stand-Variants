@@ -82,8 +82,8 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
     protected void injectedReadAdditionalSaveData(CompoundTag compound, CallbackInfo ci) {
-        if (compound.contains("Type", 8)) {
-            this.masv$setVariant(compound.getString("Type"));
+        if (compound.contains("Type")) {
+            this.masv$setVariant(compound.getStringOr("Type", "oak"));
         }
     }
 
