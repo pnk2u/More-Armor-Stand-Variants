@@ -8,7 +8,7 @@
     "pnku"
   ],
   "contact": {
-    "homepage": "https://pnku.de",
+    "homepage": "https://www.pnku.de",
     "email": "contact@pnku.de",
     "sources": "https://github.com/pnk2u/More-Armor-Stand-Variants",
     "issues": "https://github.com/pnk2u/More-Armor-Stand-Variants/issues"
@@ -37,7 +37,7 @@
   ],
   "depends": {
 		"fabricloader": ">=${loader_version}",
-		"minecraft": ">=${minecraft_version}",
+		"minecraft": ["~${minecraft_version_0}", "<${minecraft_version_1}"],
 		"java": ">=21",
 		"fabric-api": "*",
         "mstv-base": "*"
