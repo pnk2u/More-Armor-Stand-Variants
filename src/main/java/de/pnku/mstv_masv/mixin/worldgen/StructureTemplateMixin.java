@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Mirror;
@@ -22,8 +23,8 @@ import static de.pnku.mstv_masv.MoreArmorStandVariants.LOGGER;
 public class StructureTemplateMixin {
 
     @Inject(method = "placeEntities", at = @At(value = "INVOKE", target = "Lnet/minecraft/nbt/CompoundTag;put(Ljava/lang/String;Lnet/minecraft/nbt/Tag;)Lnet/minecraft/nbt/Tag;"))
-    private void injectedPlaceEntities(ServerLevelAccessor serverLevel, BlockPos pos, Mirror mirror, Rotation rotation, BlockPos offset, BoundingBox boundingBox, boolean withEntities, CallbackInfo ci, @Local(ordinal = 0) LocalRef<CompoundTag> nbt) {
-            if (nbt.get().getString("id").equals("minecraft:armor_stand")) {
+    private void injectedPlaceEntities(ServerLevelAccessor serverLevel, BlockPos pos, Mirror mirror, Rotation rotation, BlockPos blockPos2, BoundingBox boundingBox, boolean bl, ProblemReporter problemReporter, CallbackInfo ci, @Local(ordinal = 0) LocalRef<CompoundTag> nbt) {
+            if (nbt.get().getStringOr("id", "").equals("minecraft:armor_stand")) {
                 String biomeName = serverLevel.getBiome(pos).getRegisteredName();
                 String woodType;
                 switch (biomeName) {

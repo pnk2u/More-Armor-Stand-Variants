@@ -22,6 +22,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
@@ -76,15 +78,13 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    protected void injectedAddAdditionalSaveData(CompoundTag compound, CallbackInfo ci) {
-        compound.putString("Type", this.masv$getVariant());
+    protected void injectedAddAdditionalSaveData(ValueOutput valueOutput, CallbackInfo ci) {
+        valueOutput.putString("Type", this.masv$getVariant());
     }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    protected void injectedReadAdditionalSaveData(CompoundTag compound, CallbackInfo ci) {
-        if (compound.contains("Type")) {
-            this.masv$setVariant(compound.getStringOr("Type", "oak"));
-        }
+    protected void injectedReadAdditionalSaveData(ValueInput valueInput, CallbackInfo ci) {
+        this.masv$setVariant(valueInput.getStringOr("Type", "oak"));
     }
 
     @Inject(method = "brokenByPlayer", at = @At("HEAD"), cancellable = true)
