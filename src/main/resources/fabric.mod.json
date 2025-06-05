@@ -30,6 +30,7 @@
   "accessWidener": "mstv-masv.accesswidener" ,
   "mixins": [
     "mstv-masv.mixins.json" ,
+    "mstv-masv.neoforgecompat.mixins.json",
     {
 			"config": "mstv-masv.client.mixins.json" ,
 			"environment": "client"
