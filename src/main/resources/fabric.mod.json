@@ -8,7 +8,7 @@
     "pnku"
   ],
   "contact": {
-    "homepage": "https://pnku.de",
+    "homepage": "https://www.pnku.de",
     "email": "contact@pnku.de",
     "sources": "https://github.com/pnk2u/More-Armor-Stand-Variants",
     "issues": "https://github.com/pnk2u/More-Armor-Stand-Variants/issues"
@@ -30,6 +30,7 @@
   "accessWidener": "mstv-masv.accesswidener" ,
   "mixins": [
     "mstv-masv.mixins.json" ,
+    "mstv-masv.neoforgecompat.mixins.json",
     {
 			"config": "mstv-masv.client.mixins.json" ,
 			"environment": "client"
@@ -37,7 +38,7 @@
   ],
   "depends": {
 		"fabricloader": ">=${loader_version}",
-		"minecraft": ">=${minecraft_version}",
+		"minecraft": ["~${minecraft_version_0}", "<${minecraft_version_1}"],
 		"java": ">=17",
 		"fabric-api": "*",
         "mstv-base": "*"
