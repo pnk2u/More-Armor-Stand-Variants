@@ -2,16 +2,18 @@ package de.pnku.mstv_masv.mixin;
 
 import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
 import java.util.List;
 import java.util.Set;
 
-import static de.pnku.mstv_masv.MoreArmorStandVariants.LOGGER;
-
 public class MasvNeoForgeCompatMixinPlugin implements IMixinConfigPlugin {
     public static boolean isNeoForge = false;
+    public static Logger LOGGER = LoggerFactory.getLogger("MasvNeoForgeCompatMixinPlugin (mstv-masv)");
+
     @Override
     public void onLoad(String mixinPackage) {
         isNeoForge = FabricLoader.getInstance().isModLoaded("neoforge");
