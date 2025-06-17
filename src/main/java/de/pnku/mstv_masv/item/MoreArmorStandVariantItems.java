@@ -59,7 +59,7 @@ public class MoreArmorStandVariantItems {
         Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild(MoreArmorStandVariants.MOD_ID, armorStandName), armorStandItem);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> entries.addAfter(armorStandAfter, armorStandItem));
         more_armor_stands.add(armorStandItem);
-        MoreArmorStandVariants.LOGGER.info("Registered: " + armorStandName);
+        MoreArmorStandVariants.LOGGER.debug("Registered: {}", armorStandName);
     }
     
 }
