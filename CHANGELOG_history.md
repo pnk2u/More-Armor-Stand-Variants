@@ -1,3 +1,5 @@
+### 1.3.5:
+- Fix freeze/crash when generating structures with _Armor Stands_ of certain datapacks (e.g. [Luki's Grand Capitals](https://www.modrinth.com/datapack/lukis-grand-capitals))
 ### 1.3.4:
 - `1.21.6⁺`: Update to 1.21.6⁺
 ### 1.3.3:
