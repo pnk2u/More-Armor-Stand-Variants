@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
@@ -19,8 +20,8 @@ import java.util.Optional;
 @Mixin(StructureTemplate.class)
 public abstract class StructureTemplateMixin {
 
-    @WrapOperation(method = "createEntityIgnoreException", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/EntityType;create(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/level/Level;)Ljava/util/Optional;"))
-    private static Optional<Entity> wrappedCreateEntityIgnoreException(CompoundTag nbt, Level level, Operation<Optional<Entity>> original, @Local(ordinal = 0, argsOnly = true) ServerLevelAccessor serverLevel) {
+    @WrapOperation(method = "createEntityIgnoreException", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/EntityType;create(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/EntitySpawnReason;)Ljava/util/Optional;"))
+    private static Optional<Entity> wrappedCreateEntityIgnoreException(CompoundTag nbt, Level level, EntitySpawnReason spawnReason, Operation<Optional<Entity>> original, @Local(ordinal = 0, argsOnly = true) ServerLevelAccessor serverLevel) {
         MoreArmorStandVariants.LOGGER.info("Creating entity with ID: " + nbt.getString("id"));
         if (nbt.getString("id").equals("minecraft:armor_stand")) {
             MoreArmorStandVariants.LOGGER.info("Creating armor stand at position: " + nbt.getList("Pos", 6));
@@ -48,9 +49,9 @@ public abstract class StructureTemplateMixin {
             CompoundTag nbtWithVariant = nbt.copy();
             MoreArmorStandVariants.LOGGER.info("Determined wood type: " + woodType + " for biome: " + biomeName);
             nbtWithVariant.putString("Type", woodType);
-            return original.call(nbtWithVariant, level);
+            return original.call(nbtWithVariant, level, spawnReason);
         }
-        return original.call(nbt, level);
+        return original.call(nbt, level, spawnReason);
     }
 }
 
