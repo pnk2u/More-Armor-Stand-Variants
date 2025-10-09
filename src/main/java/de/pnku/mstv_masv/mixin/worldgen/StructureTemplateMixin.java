@@ -23,10 +23,10 @@ public abstract class StructureTemplateMixin {
     @WrapOperation(method = "createEntityIgnoreException", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/EntityType;create(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/EntitySpawnReason;)Ljava/util/Optional;"))
     private static Optional<Entity> wrappedCreateEntityIgnoreException(CompoundTag nbt, Level level, EntitySpawnReason spawnReason, Operation<Optional<Entity>> original, @Local(ordinal = 0, argsOnly = true) ServerLevelAccessor serverLevel) {
         MoreArmorStandVariants.LOGGER.info("Creating entity with ID: " + nbt.getString("id"));
-        if (nbt.getString("id").equals("minecraft:armor_stand")) {
-            MoreArmorStandVariants.LOGGER.info("Creating armor stand at position: " + nbt.getList("Pos", 6));
-            ListTag posList = nbt.getList("Pos", 6);
-            BlockPos pos = new BlockPos((int) posList.getDouble(0), (int) posList.getDouble(1), (int) posList.getDouble(2));
+        if (nbt.getStringOr("id", "").equals("minecraft:armor_stand")) {
+            MoreArmorStandVariants.LOGGER.info("Creating armor stand at position: " + nbt.getList("Pos"));
+            ListTag posList = nbt.getListOrEmpty("Pos");
+            BlockPos pos = new BlockPos((int) posList.getIntOr(0, 0), (int) posList.getIntOr(1, 0), (int) posList.getIntOr(2, 0));
             MoreArmorStandVariants.LOGGER.info("Created position: " + pos);
             String biomeName = serverLevel.getBiome(pos).getRegisteredName();
             MoreArmorStandVariants.LOGGER.info("Determined biome: " + biomeName + " at position: " + pos);
