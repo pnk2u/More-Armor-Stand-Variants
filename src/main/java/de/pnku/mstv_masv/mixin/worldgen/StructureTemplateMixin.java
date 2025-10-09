@@ -24,7 +24,7 @@ public abstract class StructureTemplateMixin {
     private static Optional<Entity> wrappedCreateEntityIgnoreException(CompoundTag nbt, Level level, EntitySpawnReason spawnReason, Operation<Optional<Entity>> original, @Local(ordinal = 0, argsOnly = true) ServerLevelAccessor serverLevel) {
         if (nbt.getStringOr("id", "").equals("minecraft:armor_stand")) {
             ListTag posList = nbt.getListOrEmpty("Pos");
-            BlockPos pos = new BlockPos((int) posList.getIntOr(0, 0), (int) posList.getIntOr(1, 0), (int) posList.getIntOr(2. 0));
+            BlockPos pos = new BlockPos((int) posList.getIntOr(0, 0), (int) posList.getIntOr(1, 0), (int) posList.getIntOr(2, 0));
             String biomeName = serverLevel.getBiome(pos).getRegisteredName();
             String woodType;
             switch (biomeName) {
