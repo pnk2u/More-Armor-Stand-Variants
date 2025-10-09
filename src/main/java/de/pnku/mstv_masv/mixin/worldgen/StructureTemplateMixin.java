@@ -5,23 +5,21 @@ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import de.pnku.mstv_masv.MoreArmorStandVariants;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.level.Level;
+import net.minecraft.util.ProblemReporter;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
+import net.minecraft.world.level.storage.ValueInput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-
-import java.util.Optional;
 
 @Mixin(StructureTemplate.class)
 public abstract class StructureTemplateMixin {
 
-    @WrapOperation(method = "createEntityIgnoreException", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/EntityType;create(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/EntitySpawnReason;)Ljava/util/Optional;"))
-    private static Optional<Entity> wrappedCreateEntityIgnoreException(CompoundTag nbt, Level level, EntitySpawnReason spawnReason, Operation<Optional<Entity>> original, @Local(ordinal = 0, argsOnly = true) ServerLevelAccessor serverLevel) {
+    @WrapOperation(method = "createEntityIgnoreException", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/storage/TagValueInput;create(Lnet/minecraft/util/ProblemReporter;Lnet/minecraft/core/HolderLookup$Provider;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/level/storage/ValueInput;"))
+    private static ValueInput wrappedCreateEntityIgnoreException(ProblemReporter problemReporter, HolderLookup.Provider lookup, CompoundTag nbt, Operation<ValueInput> original, @Local(ordinal = 0, argsOnly = true) ServerLevelAccessor serverLevel) {
         MoreArmorStandVariants.LOGGER.info("Creating entity with ID: " + nbt.getString("id"));
         if (nbt.getStringOr("id", "").equals("minecraft:armor_stand")) {
             MoreArmorStandVariants.LOGGER.info("Creating armor stand at position: " + nbt.getList("Pos"));
@@ -49,9 +47,9 @@ public abstract class StructureTemplateMixin {
             CompoundTag nbtWithVariant = nbt.copy();
             MoreArmorStandVariants.LOGGER.info("Determined wood type: " + woodType + " for biome: " + biomeName);
             nbtWithVariant.putString("Type", woodType);
-            return original.call(nbtWithVariant, level, spawnReason);
+            return original.call(problemReporter, lookup, nbtWithVariant);
         }
-        return original.call(nbt, level, spawnReason);
+        return original.call(problemReporter, lookup, nbt);
     }
 }
 
