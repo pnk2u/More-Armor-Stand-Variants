@@ -1,27 +1,22 @@
 package de.pnku.mstv_masv.mixin.entity;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import de.pnku.mstv_base.item.MoreStickVariantItem;
-import de.pnku.mstv_masv.item.MoreArmorStandVariantItems;
 import de.pnku.mstv_masv.util.IArmorStand;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import org.spongepowered.asm.mixin.Mixin;
@@ -30,7 +25,6 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static de.pnku.mstv_masv.MoreArmorStandVariants.LOGGER;
 import static de.pnku.mstv_masv.item.MoreArmorStandVariantItems.*;
 
 @Mixin(ArmorStand.class)
@@ -87,29 +81,24 @@ public abstract class ArmorStandMixin extends LivingEntity implements IArmorStan
         this.masv$setVariant(valueInput.getStringOr("Type", "oak"));
     }
 
-    @Inject(method = "brokenByPlayer", at = @At("HEAD"), cancellable = true)
-    private void injectedBrokenByPlayer(ServerLevel level, DamageSource damageSource, CallbackInfo ci) {
+    @WrapOperation(method = "brokenByPlayer(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/damagesource/DamageSource;)V", at = @At(value = "NEW", target = "net/minecraft/world/item/ItemStack"))
+    private ItemStack wrappedNewItemStackInBrokenByPlayer(ItemLike item, Operation<ItemStack> original) {
         String armorStandVariant = ((IArmorStand) this).masv$getVariant();
         if (armorStandVariant != null) {
-            // debug
-            // LOGGER.info("Armor Stand Variant found: {}", (armorStandVariant));
-
-            ItemStack itemStack = armorStandItemFromVariant(armorStandVariant);
-        itemStack.set(DataComponents.CUSTOM_NAME, this.getCustomName());
-        Block.popResource(this.level(), this.blockPosition(), itemStack);
-        ((ArmorStand) (Object) this).brokenByAnything(level, damageSource);
+            return armorStandItemFromVariant(armorStandVariant);
+        } else {
+            return original.call(item);
         }
-        ci.cancel();
     }
 
-    @Inject(method = "showBreakingParticles", at = @At("HEAD"), cancellable = true)
-    private void injectedShowBreakingParticles(CallbackInfo ci) {
+    @WrapOperation(method = "showBreakingParticles", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;defaultBlockState()Lnet/minecraft/world/level/block/state/BlockState;"))
+    private BlockState wrappedDefaultBlockStateInShowBreakingParticles(Block inputBlock, Operation<BlockState> original) {
         String armorStandVariant = this.masv$getVariant();
-        if (!armorStandVariant.equals("oak") && !armorStandVariant.isEmpty() && this.level() instanceof ServerLevel) {
-            Block armorStandPlanks = Block.byItem(MoreStickVariantItem.getPlanksItem(armorStandVariant));
-            ((ServerLevel)this.level()).sendParticles((ParticleOptions)new BlockParticleOption(ParticleTypes.BLOCK, armorStandPlanks.defaultBlockState()), this.getX(), this.getY(0.6666666666666666), this.getZ(), 10, (double)(this.getBbWidth() / 4.0f), (double)(this.getBbHeight() / 4.0f), (double)(this.getBbWidth() / 4.0f), 0.05);
-            ci.cancel();
+        if (!armorStandVariant.equals("oak") && !armorStandVariant.isEmpty()) {
+            Block block = Block.byItem(MoreStickVariantItem.getPlanksItem(armorStandVariant));
+            return block.defaultBlockState();
         }
+        return original.call(inputBlock);
     }
 
     @Inject(method = "getPickResult", at = @At("HEAD"), cancellable = true)
