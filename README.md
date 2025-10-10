@@ -21,6 +21,9 @@ Want to help translate? Feel free to open a PR to the **default branch (`1.21(.1
 ### Changelog History
 
 <!--CHANGELOG:START-->
+### 1.3.6:
+- `1.21.6(-8)`: Fix crash on breaking Armor Stands (did not affect `1.21.9(10)`)
+- Internal changes potentially improving compatibility with other mods
 ### 1.3.5:
 - Fix freeze/crash when generating structures with _Armor Stands_ of certain datapacks (e.g. [Luki's Grand Capitals](https://www.modrinth.com/datapack/lukis-grand-capitals))
 ### 1.3.4:
