@@ -1,3 +1,5 @@
+### 1.3.8:
+- Fix `1.3.7` changes as the since `1.3.6` unnecessary compatibility layer was not removed properly causing crashes on startup
 ### 1.3.7:
 - `Neoforge`¹:  
   - Re-enable `1.3.0`'s _"Armor Stands in Structures replacement"_-feature (was disabled in `1.3.2` for Neoforge users)
