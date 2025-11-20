@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.state.ArmorStandRenderState;
 import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,15 +33,16 @@ public abstract class ArmorStandRendererMixin extends LivingEntityRenderer<Armor
         cir.setReturnValue(new MoreArmorStandVariantRenderState());
     }
 
-        MoreArmorStandVariantRenderState moreArmorStandVariantRenderState = (MoreArmorStandVariantRenderState) armorStandRenderState;
-        if (moreArmorStandVariantRenderState.armorStandVariant != null) {
-            if (moreArmorStandVariantRenderState.armorStandVariant.equals("oak")) {
-                cir.setReturnValue(DEFAULT_SKIN_LOCATION);
-            } else {
-                String path = "textures/entity/armorstand/" + moreArmorStandVariantRenderState.armorStandVariant + ".png";
-                cir.setReturnValue(MoreArmorStandVariants.asId(path));
     @Inject(method = "getTextureLocation(Lnet/minecraft/client/renderer/entity/state/ArmorStandRenderState;)Lnet/minecraft/resources/Identifier;", at = @At("HEAD"), cancellable = true)
     public void injectedGetTextureLocation(ArmorStandRenderState armorStandRenderState, CallbackInfoReturnable<Identifier> cir) {
+        if (armorStandRenderState instanceof MoreArmorStandVariantRenderState moreArmorStandVariantRenderState) {
+            if (moreArmorStandVariantRenderState.armorStandVariant != null) {
+                if (moreArmorStandVariantRenderState.armorStandVariant.equals("oak")) {
+                    cir.setReturnValue(DEFAULT_SKIN_LOCATION);
+                } else {
+                    String path = "textures/entity/armorstand/" + moreArmorStandVariantRenderState.armorStandVariant + ".png";
+                    cir.setReturnValue(MoreArmorStandVariants.asId(path));
+                }
             }
         }
     }
