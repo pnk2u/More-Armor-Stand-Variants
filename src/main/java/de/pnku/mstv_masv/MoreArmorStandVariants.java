@@ -10,7 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
@@ -56,8 +56,8 @@ public class MoreArmorStandVariants implements ModInitializer {
 		}
 	}
 
-	public static ResourceLocation asId(String path) {
-		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+	public static Identifier asId(String path) {
+		return Identifier.fromNamespaceAndPath(MOD_ID, path);
 	}
 
 }

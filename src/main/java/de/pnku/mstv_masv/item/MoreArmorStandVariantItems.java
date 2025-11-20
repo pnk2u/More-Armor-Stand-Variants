@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.*;
 import net.minecraft.core.Registry;
 import de.pnku.mstv_masv.MoreArmorStandVariants;
@@ -56,7 +56,7 @@ public class MoreArmorStandVariantItems {
 
     private static void registerArmorStandItem(Item armorStandItem, Item armorStandAfter) {
         String armorStandName = ((MoreArmorStandVariantItem) armorStandItem).masvWoodType + "_armor_stand";
-        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild(MoreArmorStandVariants.MOD_ID, armorStandName), armorStandItem);
+        Registry.register(BuiltInRegistries.ITEM, Identifier.tryBuild(MoreArmorStandVariants.MOD_ID, armorStandName), armorStandItem);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> entries.addAfter(armorStandAfter, armorStandItem));
         more_armor_stands.add(armorStandItem);
         MoreArmorStandVariants.LOGGER.debug("Registered: {}", armorStandName);
