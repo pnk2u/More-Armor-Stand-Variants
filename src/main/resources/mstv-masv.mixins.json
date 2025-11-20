@@ -4,7 +4,8 @@
   "package": "de.pnku.mstv_masv.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "entity.ArmorStandMixin"
+    "entity.ArmorStandMixin",
+    "worldgen.StructureTemplateMixin"
   ],
   "injectors": {
     "defaultRequire": 1
