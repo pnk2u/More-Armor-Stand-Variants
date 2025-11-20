@@ -34,13 +34,14 @@ public abstract class ArmorStandRendererMixin extends LivingEntityRenderer<Armor
 
     @Inject(method = "getTextureLocation(Lnet/minecraft/client/renderer/entity/state/ArmorStandRenderState;)Lnet/minecraft/resources/ResourceLocation;", at = @At("HEAD"), cancellable = true)
     public void injectedGetTextureLocation(ArmorStandRenderState armorStandRenderState, CallbackInfoReturnable<ResourceLocation> cir) {
-        MoreArmorStandVariantRenderState moreArmorStandVariantRenderState = (MoreArmorStandVariantRenderState) armorStandRenderState;
-        if (moreArmorStandVariantRenderState.armorStandVariant != null) {
-            if (moreArmorStandVariantRenderState.armorStandVariant.equals("oak")) {
-                cir.setReturnValue(DEFAULT_SKIN_LOCATION);
-            } else {
-                String path = "textures/entity/armorstand/" + moreArmorStandVariantRenderState.armorStandVariant + ".png";
-                cir.setReturnValue(MoreArmorStandVariants.asId(path));
+        if (armorStandRenderState instanceof MoreArmorStandVariantRenderState moreArmorStandVariantRenderState) {
+            if (moreArmorStandVariantRenderState.armorStandVariant != null) {
+                if (moreArmorStandVariantRenderState.armorStandVariant.equals("oak")) {
+                    cir.setReturnValue(DEFAULT_SKIN_LOCATION);
+                } else {
+                    String path = "textures/entity/armorstand/" + moreArmorStandVariantRenderState.armorStandVariant + ".png";
+                    cir.setReturnValue(MoreArmorStandVariants.asId(path));
+                }
             }
         }
     }
