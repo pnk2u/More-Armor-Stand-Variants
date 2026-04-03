@@ -1,3 +1,18 @@
+<a name="1.3.10"></a>
+### 1.3.10:
+- `26.1`: Update to <ins>26.1</ins>
+
+<br></br>
+<sub>License update to [`CC-BY-NC-SA-4.0`](https://creativecommons.org/licenses/by-nc-sa/4.0/) (previously [`MIT`](https://choosealicense.com/licenses/mit))</sub>
+
+<h2><sub><sub><sup><ins>Download 1.3.10 + 1.21.4</ins>:</sup>&#x200A;
+<a title="Download (Modrinth):&#10;More Armor Stand Variants 1.3.10 + 1.21.4" href="https://www.modrinth.com/mod/Jcjz5ev6/version/2IVdxQUz">
+<img width=26 src="https://img.shields.io/badge/-%20-%23032a?style=flat&logo=modrinth"></a>
+<sup><img width=7 height=10 src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/shared/pres/icon/separator_v.svg"></sup>
+<a title="Download (Curseforge):&#10;1.3.10 + 1.21.4 - More Armor Stand Variants" href="https://www.curseforge.com/minecraft/mc-mods/more-armor-stand-variants/files/7870061">
+<img width=26 src="https://img.shields.io/badge/--%23302a?style=flat&logo=curseforge"></a>
+</sub></sub></h2>
+
 <a name="1.3.9"></a>
 ### 1.3.9:
 - `1.21.6(-11)`: Update to <ins>1.21.11</ins>
