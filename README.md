@@ -14,7 +14,8 @@
       <td><strong>Minecraft</strong></td>
       <td>
         <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=1.20.1"><code>1.20.1</code></a><br>
-        <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=1.21&g=1.21.1"><code>1.21(.1)</code></a>, <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=1.21.4&g=1.21.5&g=1.21.6&g=1.21.7&g=1.21.8&g=1.21.9&g=1.21.10&g=1.21.11"><code>1.21.4</code>~<code>1.21.11</code></a>
+        <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=1.21&g=1.21.1"><code>1.21(.1)</code></a>, <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=1.21.4&g=1.21.5&g=1.21.6&g=1.21.7&g=1.21.8&g=1.21.9&g=1.21.10&g=1.21.11"><code>1.21.4</code>~<code>1.21.11</code></a><br>
+        <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=26.1"><code>26.1</code></a>
       </td>
     </tr>
   </thead>
@@ -39,10 +40,11 @@
 <a name="translations"></a>
 ### <img height="24" align="left" src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/shared/pres/icon/translate.svg"> Translations
 
-Currently available in:
-- English
-- German
-- Ukrainian (@[StarmanMine142](/../../../../StarmanMine142) with [PR #3](../../pull/3)/[4](../../pull/4)/[5](../../pull/5), added in [`1.2.1`](./CHANGELOG_history.md#121))
+|Language|Translator|
+|--|--|
+|English||
+|German||
+|Ukrainian|@[StarmanMine142](/../../../../StarmanMine142) with [PR #3](../../pull/3)/[4](../../pull/4)/[5](../../pull/5), added in [`1.2.1`](./CHANGELOG_history.md#121)|
 
 > [!NOTE]
 > > Want to help translate? If you can, please open a PR to the **default branch** [`1.21(.1)`](../../tree/1.21(.1)).  
