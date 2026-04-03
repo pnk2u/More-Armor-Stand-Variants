@@ -1,66 +1,84 @@
-# <img width='24' src="./src/main/resources/icon.png"> More Armor Stand Variants
-> ![Mod Icon](https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/More-Armor-Stand-Variants/pres/logo/logo_c.png)
->
-> A simple mod adding wood variants for Minecraft's Armor Stand Items and Entities.
+<a name="more-armor-stand-variants"></a>
+# <img height='48' align=right src="./src/main/resources/icon.png"> <p align="center">&emsp;&emsp;&emsp; More Armor Stand Variants <sub><a title="More Armor Stand Variants on Modrinth" href="https://www.modrinth.com/mod/more-armor-stand-variants"><img width="40" src="https://img.shields.io/badge/-%20-%230f91?style=flat&logo=modrinth"></a></sub> <a title="More Armor Stand Variants on Curseforge" href="https://www.curseforge.com/minecraft/mc-mods/more-armor-stand-variants"><sub><img width="40" src="https://img.shields.io/badge/--%23f062?style=flat&logo=curseforge"></sub></a> </p>
+> <img align=left height="153" src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/More-Armor-Stand-Variants/pres/logo/logo_c.png">  
+>  A mod adding wood variants for Minecraft's Armor Stand. <br><br><br><br>  
+>  <details><summary><h5>Show in-game example image</h5></summary><br><img src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/More-Armor-Stand-Variants/pres/mr_desc_banner.png"><sup><br><!--CAPTION:PLACEHOLDER--></sup></details>  
+<br>  
 
-### Compatibility
+<a name="compatibility"></a>
+### <img height="24" align="left" src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/shared/pres/icon/puzzle.svg"> Compatibility
 
-- Minecraft: `1.20.1`, `1.21(.1)`, `1.21.4`~`1.21.10`
-- Mod Loader: _Fabric_
-- Requires: [`Fabric API`](https://modrinth.com/mod/fabric-api), [<img width='16' src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/More-Stick-Variants/pres/logo/logo_c.png"> `More Stick Variants (MStV)`](https://modrinth.com/mod/more-stick-variants)
+<table>
+  <thead>
+    <tr>
+      <td><strong>Minecraft</strong></td>
+      <td>
+        <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=1.20.1"><code>1.20.1</code></a><br>
+        <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=1.21&g=1.21.1"><code>1.21(.1)</code></a>, <a href="https://modrinth.com/mod/more-armor-stand-variants/versions?g=1.21.4&g=1.21.5&g=1.21.6&g=1.21.7&g=1.21.8&g=1.21.9&g=1.21.10&g=1.21.11"><code>1.21.4</code>~<code>1.21.11</code></a>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Mod Loaders</strong></td>
+      <td><sub><img width="16" src="https://raw.githubusercontent.com/FabricMC/fabric/1.21.10/src/main/resources/assets/fabric/icon.png"></sub><a href="https://fabricmc.net/use/installer/"><code>Fabric Loader</code></a></td>
+    </tr>
+  </tbody>
+  <thead>
+    <tr>
+      <td><strong>Requires</strong></td>
+      <td>
+        <a href="https://modrinth.com/mod/fabric-api"><sub><img width="16" src="https://raw.githubusercontent.com/FabricMC/fabric/1.21.10/src/main/resources/assets/fabric/icon.png"></sub><code>Fabric API</code></a><br>
+        <a href="https://modrinth.com/mod/more-stick-variants"><sub><img width="16" src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/More-Stick-Variants/pres/logo/logo_c.png"></sub><code>More Stick Variants</code></a>
+      </td>
+    </tr>
+  </thead>
+</table>
+<br>
 
-### ᴬ⃯ ᵦ⃔ Translations
+<a name="translations"></a>
+### <img height="24" align="left" src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/shared/pres/icon/translate.svg"> Translations
 
 Currently available in:
 - English
 - German
-- Ukrainian (@[StarmanMine142](/../../../../StarmanMine142) with [PR #3](../../pull/3)/[4](../../pull/4)/[5](../../pull/5), added in [`1.2.1`](/../../#121))
+- Ukrainian (@[StarmanMine142](/../../../../StarmanMine142) with [PR #3](../../pull/3)/[4](../../pull/4)/[5](../../pull/5), added in [`1.2.1`](./CHANGELOG_history.md#121))
 
-Want to help translate? Feel free to open a PR to the **default branch (`1.21(.1)`)**.
+> [!NOTE]
+> > Want to help translate? If you can, please open a PR to the **default branch** [`1.21(.1)`](../../tree/1.21(.1)).  
+> > Otherwise, simply send your translation via email (contact@pnku.de) or join the [Discord](https://discord.lieonlion.dev).
 
-### Changelog History
+<br>
 
+
+<img height="53" align="left" src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/shared/pres/icon/changelog.svg">  
+
+### Versions
+<a name="most-recent-version"></a>
 <!--CHANGELOG:START-->
-### 1.3.6:
-- `1.21.6(-8)`: Fix crash on breaking Armor Stands (did not affect `1.21.9(10)`)
-- Internal changes potentially improving compatibility with other mods
-### 1.3.5:
-- Fix freeze/crash when generating structures with _Armor Stands_ of certain datapacks (e.g. [Luki's Grand Capitals](https://www.modrinth.com/datapack/lukis-grand-capitals))
-### 1.3.4:
-- `1.21.6⁺`: Update to 1.21.6⁺
-### 1.3.3:
-- `1.20.1`, `1.21(.1)`: Fix crash on startup (when using certain mods e.g. *EMI* ) introduced by previous version `1.3.2`
-### 1.3.2:
-- `Neoforge`¹:  
-  Disable `1.3.0`'s _"Armor Stands in Structures replacement"_-feature
-  > **Reason**: This feature is not compatible with Neoforge's own changes to the affected code.
+<a name="1.3.9"></a>
+#### 1.3.9[*](#footnote-*):
+- `1.21.6(-11)`: Update to <ins>1.21.11</ins>
+  - `1.21.11`: Fix crash when interacting with a Smithing Table
 
-  > **Note**: This functionality will eventually be re-added with *[Quad](https://modrinth.com/mod/quad)* `1.3.0`'s full release for *Neoforge* or *More Armor Stand Variants*' own *Neoforge* release, whichever is earlier.
+<h2><sub><sub><sup><ins>Download 1.3.9 + 1.21.6(-11)</ins>:</sup>&#x200A;
+<a title="Download (Modrinth):&#10;More Armor Stand Variants 1.3.9 + 1.21.6(-11)" href="https://www.modrinth.com/mod/Jcjz5ev6/version/sgcZQ4UW">
+<img width=26 src="https://img.shields.io/badge/-%20-%23032a?style=flat&logo=modrinth"></a>
+<sup><img width=7 height=10 src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/shared/pres/icon/separator_v.svg"></sup>
+<a title="Download (Curseforge):&#10;More Armor Stand Variants 1.3.9 + 1.21.6(-11)" href="https://www.curseforge.com/minecraft/mc-mods/more-armor-stand-variants/files/7244312">
+<img width=26 src="https://img.shields.io/badge/--%23302a?style=flat&logo=curseforge"></a>
+</sub></sub></h2>
 
-¹<sup>) Not officially supported.</sup>
-### 1.3.1:
-- `1.21.5`: Update to 1.21.5
-## 1.3.0:
-- Implement Armor Stands spawning as part of a structure matching their wood variant to the biome at their position
-  - **Vanilla**: Only _Taiga Villages_ are affected, the Armor Stands of the Armorer spawn as the Spruce variant  
-    ![](https://uwu.catgirl.host/i/8hz5m.png)
-  - **Modded**: Any structure in a vanilla biome that has an associated wood type will spawn its Armor Stands using that biome's matching variant
-### 1.2.1:
-- Add Ukrainian Translation (by [Starman](https://modrinth.com/user/StarmanMine142))
-## 1.2.0:
-- Add Dispenser functionality for all Armor Stand variants
-- `1.21.3⁺` Add _**Pale Oak** Armor Stand_ (requires `MStV 1.3.0`)
-- `1.21.4`: Update to 1.21.4
-### 1.1.2:
-- Add breaking particles according to wood type
-## 1.1.0:
-- Implement 'Pick Block'-functionality returning the correct variant when middle-clicking an Armor Stand in Creative Mode
-- `1.21.2`, `1.21.3`: Update to 1.21.2, 1.21.3
-### 1.0.1:
-- `1.20.1`, `1.20.4`: Correct Java version from 21 to 17
 <!--CHANGELOG:END-->
+<a name="footnote-*"></a>
+> <strong>*</strong><sup>: Most recent version</sup>  
+> _`The version above is automatically updated with the newest release and only after it has been successfully published.`_
 
-> _`The section above is automatically updated with each new release and only includes already published releases.`_
+<a name="changelog-history"></a>
+> [!TIP]
+> > Looking for changes of previous versions?  
+> > You can find them in the [changelog history](./CHANGELOG_history.md).
+
 ---
 #### Support/Contact
 - Suggestions? Questions? Bug reports?  

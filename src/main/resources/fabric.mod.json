@@ -22,15 +22,11 @@
     ],
     "client": [
       "de.pnku.mstv_masv.MoreArmorStandVariantsClient"
-    ],
-    "fabric-datagen": [
-      "de.pnku.mstv_masv.MoreArmorStandVariantDatagen"
     ]
   },
   "accessWidener": "mstv-masv.accesswidener" ,
   "mixins": [
     "mstv-masv.mixins.json" ,
-    "mstv-masv.neoforgecompat.mixins.json",
     {
 			"config": "mstv-masv.client.mixins.json" ,
 			"environment": "client"
@@ -38,7 +34,7 @@
   ],
   "depends": {
 		"fabricloader": ">=${loader_version}",
-		"minecraft": ">=${minecraft_version_0} <${minecraft_version_1}",
+		"minecraft": ">${minecraft_version_0} <${minecraft_version_1}",
 		"java": ">=17",
 		"fabric-api": "*",
         "mstv-base": "*"
