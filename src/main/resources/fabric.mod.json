@@ -22,9 +22,6 @@
     ],
     "client": [
       "de.pnku.mstv_masv.MoreArmorStandVariantsClient"
-    ],
-    "fabric-datagen": [
-      "de.pnku.mstv_masv.MoreArmorStandVariantDatagen"
     ]
   },
   "accessWidener": "mstv-masv.accesswidener" ,
