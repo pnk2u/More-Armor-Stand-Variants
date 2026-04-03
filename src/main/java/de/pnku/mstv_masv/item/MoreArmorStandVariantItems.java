@@ -2,15 +2,14 @@ package de.pnku.mstv_masv.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.core.Registry;
 import de.pnku.mstv_masv.MoreArmorStandVariants;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static de.pnku.mstv_masv.MoreArmorStandVariants.asId;
 
 
 public class MoreArmorStandVariantItems {
@@ -27,16 +26,6 @@ public class MoreArmorStandVariantItems {
     public static final Item MANGROVE_ARMOR_STAND = new MoreArmorStandVariantItem("mangrove", new Item.Properties().stacksTo(16));
     public static final Item SPRUCE_ARMOR_STAND = new MoreArmorStandVariantItem("spruce", new Item.Properties().stacksTo(16));
     public static final Item WARPED_ARMOR_STAND = new MoreArmorStandVariantItem("warped", new Item.Properties().stacksTo(16).fireResistant());
-
-//    public static MoreArmorStandVariantItem createMasvItem(String masvWoodType){
-//        if (masvWoodType.matches("crimson|warped")) {
-//            return new MoreArmorStandVariantItem(masvWoodType, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, MoreArmorStandVariants.asId(masvWoodType + "_armor_stand")))
-//                    .stacksTo(16).fireResistant());
-//        } else {
-//        return new MoreArmorStandVariantItem(masvWoodType, new Item.Properties().setId(ResourceKey.create(Registries.ITEM, MoreArmorStandVariants.asId(masvWoodType + "_armor_stand")))
-//                .stacksTo(16));
-//        }
-//    }
 
     public static final List<Item> more_armor_stands = new ArrayList<>();
 
@@ -56,7 +45,7 @@ public class MoreArmorStandVariantItems {
 
     private static void registerArmorStandItem(Item armorStandItem, Item armorStandAfter) {
         String armorStandName = ((MoreArmorStandVariantItem) armorStandItem).masvWoodType + "_armor_stand";
-        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild(MoreArmorStandVariants.MOD_ID, armorStandName), armorStandItem);
+        Registry.register(BuiltInRegistries.ITEM, asId(armorStandName), armorStandItem);
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> entries.addAfter(armorStandAfter, armorStandItem));
         more_armor_stands.add(armorStandItem);
         MoreArmorStandVariants.LOGGER.debug("Registered: {}", armorStandName);
