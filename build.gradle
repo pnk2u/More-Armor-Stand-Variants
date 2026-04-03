@@ -173,6 +173,9 @@ def replaceProperties = [
 		filesMatching("fabric.mod.json") {
 			expand replaceProperties
 		}
+		filesMatching("*.mixins.json") {
+			expand replaceProperties
+		}
 	}
 }
 
