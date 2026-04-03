@@ -56,16 +56,17 @@ Currently available in:
 ### Versions
 <a name="most-recent-version"></a>
 <!--CHANGELOG:START-->
-<a name="1.3.8"></a>
-#### 1.3.8[*](#footnote-*):
-- Fix `1.3.7` changes as the since `1.3.6` unnecessary compatibility layer was not removed properly causing crashes on startup
+<a name="1.3.9"></a>
+#### 1.3.9[*](#footnote-*):
+- `1.21.6(-11)`: Update to <ins>1.21.11</ins>
+  - `1.21.11`: Fix crash when interacting with a Smithing Table
 
-<h2><sub><sub><sup><ins>Download 1.3.8 + 1.21(.1)</ins>:</sup>&#x200A;
-<a title="Download (Modrinth):&#10;More Armor Stand Variants 1.3.8 + 1.21(.1)" href="https://modrinth.com/mod/more-armor-stand-variants/version/ODywxd5f">
-<img width=26 src="https://img.shields.io/badge/-%20-%230f91?style=flat&logo=modrinth"></a>
+<h2><sub><sub><sup><ins>Download 1.3.9 + 1.21.6(-11)</ins>:</sup>&#x200A;
+<a title="Download (Modrinth):&#10;More Armor Stand Variants 1.3.9 + 1.21.6(-11)" href="https://www.modrinth.com/mod/Jcjz5ev6/version/sgcZQ4UW">
+<img width=26 src="https://img.shields.io/badge/-%20-%23032a?style=flat&logo=modrinth"></a>
 <sup><img width=7 height=10 src="https://raw.githubusercontent.com/pnk2u/resources/main/ModProjects/shared/pres/icon/separator_v.svg"></sup>
-<a title="Download (Curseforge):&#10;More Armor Stand Variants 1.3.8 + 1.21(.1)" href="https://www.curseforge.com/minecraft/mc-mods/more-armor-stand-variants/files/7120882">
-<img width=26 src="https://img.shields.io/badge/--%23f062?style=flat&logo=curseforge"></a>
+<a title="Download (Curseforge):&#10;More Armor Stand Variants 1.3.9 + 1.21.6(-11)" href="https://www.curseforge.com/minecraft/mc-mods/more-armor-stand-variants/files/7244312">
+<img width=26 src="https://img.shields.io/badge/--%23302a?style=flat&logo=curseforge"></a>
 </sub></sub></h2>
 
 <!--CHANGELOG:END-->
