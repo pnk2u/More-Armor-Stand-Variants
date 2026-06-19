@@ -11,12 +11,12 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ArmorStandItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -24,8 +24,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.function.Consumer;
 
 
 public class MoreArmorStandVariantItem extends ArmorStandItem {
@@ -48,12 +46,12 @@ public class MoreArmorStandVariantItem extends ArmorStandItem {
             BlockPos blockPos = blockPlaceContext.getClickedPos();
             ItemStack itemStack = context.getItemInHand();
             Vec3 vec3 = Vec3.atBottomCenterOf(blockPos);
-            AABB aABB = EntityType.ARMOR_STAND.getDimensions().makeBoundingBox(vec3.x(), vec3.y(), vec3.z());
+            AABB aABB = EntityTypes.ARMOR_STAND.getDimensions().makeBoundingBox(vec3.x(), vec3.y(), vec3.z());
             if (level.noCollision((Entity)null, aABB) && level.getEntities((Entity)null, aABB).isEmpty()) {
                 if (level instanceof ServerLevel) {
                     ServerLevel serverLevel = (ServerLevel)level;
-                    Consumer<ArmorStand> consumer = EntityType.createDefaultStackConfig(serverLevel, itemStack, context.getPlayer());
-                    ArmorStand armorStand = (ArmorStand)EntityType.ARMOR_STAND.create(serverLevel, consumer, blockPos, EntitySpawnReason.SPAWN_ITEM_USE, true, true);
+                    PostSpawnProcessor<ArmorStand> postSpawnProcessor = EntityType.createDefaultStackConfig(serverLevel, itemStack, context.getPlayer());
+                    ArmorStand armorStand = (ArmorStand) EntityTypes.ARMOR_STAND.create(serverLevel, postSpawnProcessor, blockPos, EntitySpawnReason.SPAWN_ITEM_USE, true, true);
                     if (armorStand == null) {
                         return InteractionResult.FAIL;
                     }
