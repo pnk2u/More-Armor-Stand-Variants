@@ -1,3 +1,14 @@
+<a name="1.3.11"></a>
+### 1.3.11:
+- `26.2`: Update to <ins>26.2</ins>
+
+<h2><sub><sub><sup><ins>Download 1.3.11 + 26.2</ins>:</sup>&#x200A;
+<a title="Download (Modrinth):&#10;More Armor Stand Variants 1.3.11 + 26.2" href="https://www.modrinth.com/mod/Jcjz5ev6/version/NhGgIc2h">
+<img width=26 src="https://img.shields.io/badge/-%20-%23032a?style=flat&logo=modrinth"></a>&#x200A;
+<a title="Download (Curseforge):&#10;1.3.11 + 26.2 - More Armor Stand Variants" href="https://www.curseforge.com/minecraft/mc-mods/more-armor-stand-variants/files/8276692">
+<img width=26 src="https://img.shields.io/badge/--%23302a?style=flat&logo=curseforge"></a>
+</sub></sub></h2>
+
 <a name="1.3.10"></a>
 ### 1.3.10:
 - `26.1`: Update to <ins>26.1</ins>
